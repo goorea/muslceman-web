@@ -62,9 +62,11 @@ export type Model = {
 
 export type Mutation = {
   __typename?: 'Mutation';
+  changePassword: Scalars['Boolean'];
   createTraining: Training;
   deletePlan: Scalars['Boolean'];
   deleteTraining: Scalars['Boolean'];
+  findPassword: Scalars['Boolean'];
   login: AuthenticationResponse;
   multipleCreateOrUpdatePlans: Array<Plan>;
   multipleCreateTrainings: Array<Training>;
@@ -77,6 +79,11 @@ export type Mutation = {
   withdrawal: Scalars['Boolean'];
 };
 
+export type MutationChangePasswordArgs = {
+  password: Scalars['String'];
+  token: Scalars['String'];
+};
+
 export type MutationCreateTrainingArgs = {
   input: CreateTrainingInput;
 };
@@ -87,6 +94,10 @@ export type MutationDeletePlanArgs = {
 
 export type MutationDeleteTrainingArgs = {
   _id: Scalars['ObjectId'];
+};
+
+export type MutationFindPasswordArgs = {
+  email: Scalars['String'];
 };
 
 export type MutationLoginArgs = {
@@ -171,6 +182,15 @@ export type RegisterInput = {
   passwordConfirmation: Scalars['String'];
   profileImagePath?: Maybe<Scalars['String']>;
   tel?: Maybe<Scalars['String']>;
+};
+
+export type ResetPassword = Model & {
+  __typename?: 'ResetPassword';
+  _id: Scalars['ID'];
+  createdAt: Scalars['DateTime'];
+  email: Scalars['String'];
+  token: Scalars['String'];
+  updatedAt: Scalars['DateTime'];
 };
 
 export enum Role {

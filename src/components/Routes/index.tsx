@@ -4,6 +4,7 @@ import { Route, Routes as ReactRouterRoutes } from 'react-router-dom';
 import Layout from '@src/components/Layout';
 import Administrator from '@src/components/Routes/middlewares/Administrator';
 import RedirectIfAdministrator from '@src/components/Routes/middlewares/RedirectIfAdministrator';
+import ChangePasswordScreen from '@src/screens/ChangePasswordScreen';
 import CreateTrainingsScreen from '@src/screens/CreateTrainingsScreen';
 import EmailVerifyScreen from '@src/screens/EmailVerifyScreen';
 import HomeScreen from '@src/screens/HomeScreen';
@@ -25,6 +26,7 @@ const Routes: React.FC = () => {
         <Route path="/login" element={<LoginScreen />} />
         <Route path="/oauth/naver" element={<LoginScreen />} />
         <Route path="/email/verify" element={<EmailVerifyScreen />} />
+        <Route path="/password/reset" element={<ChangePasswordScreen />} />
       </Route>
 
       <Route

@@ -30,12 +30,16 @@ type JWTResponse {
 }
 
 type Mutation {
+    "비밀번호 변경"
+    changePassword(password: String!, token: String!): Boolean!
     "운동종목 추가"
     createTraining(input: CreateTrainingInput!): Training!
     "운동계획 삭제"
     deletePlan(_id: ObjectId!): Boolean!
     "운동종목 삭제"
     deleteTraining(_id: ObjectId!): Boolean!
+    "비밀번호 변경 이메일 전송 및 토큰 할당"
+    findPassword(email: String!): Boolean!
     "사용자 JWT 토큰 반환"
     login(input: LoginInput!): AuthenticationResponse!
     "여러개의 운동 계획 생성 및 수정"
@@ -86,6 +90,17 @@ type Query {
     trainings: [Training!]!
     "모든 사용자 조회"
     users: [User!]!
+}
+
+"비밀번호 초기화 모델"
+type ResetPassword implements Model {
+    _id: ID!
+    createdAt: DateTime!
+    "이메일"
+    email: String!
+    "비밀번호 초기화 토큰"
+    token: String!
+    updatedAt: DateTime!
 }
 
 "운동종목 모델"
